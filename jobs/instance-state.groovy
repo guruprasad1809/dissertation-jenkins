@@ -3,7 +3,7 @@ pipelineJob('instance-state-management') {
 
     parameters{
 
-        stringParam('Instance Id', instance_id , 'Please enter the Instance ids')
+        stringParam('instance id', instanceid , 'Please enter the Instance ids')
         choiceParam('Action',['stop','start','terminate'], 'Please choose a desired action')
     }
 
