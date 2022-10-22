@@ -1,7 +1,7 @@
 job('example') {
     publishers {
         extendedEmail {
-            recipientList('me@halfempty.org')
+            recipientList('guruprasadhegde18@gmail.com')
             defaultSubject('Oops')
             defaultContent('Something broken')
             contentType('text/html')
