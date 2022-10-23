@@ -26,5 +26,6 @@ node any {
 }
 def startinstace()
 {
-    sh (script:"aws ec2 start-instances --instance-ids ${instaceid.trim()}")
+    sh (script:"aws ec2 start-instances --instance-ids ${instaceid.trim()} || true , returnStdout:true")
+    echo "Starting Instance"
 }
