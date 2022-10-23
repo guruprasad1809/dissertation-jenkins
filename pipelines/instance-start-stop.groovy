@@ -1,5 +1,5 @@
 node {
-
+    stages{
     if(Action == 'start')
     {
         stage ('Starting Instace')
@@ -23,6 +23,7 @@ node {
             echo "Terminating Instace"
             terminateinstance()
         }
+    }
     }
 }
 def startinstance()
