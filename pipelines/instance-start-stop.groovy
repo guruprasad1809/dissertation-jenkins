@@ -5,7 +5,7 @@ node {
         stage ('Starting Instace')
         {
             echo "starting instance"
-            startinstace()
+            startinstance()
         }
     }
     if(Action == 'stop')
@@ -25,8 +25,10 @@ node {
         }
     }
 }
-def startinstace()
+def startinstance()
 {
+    sh (script:"aws ec2 start-instances --instance-ids ${instaceid.trim()} || true , returnStdout:true")
+    echo "Starting Instance"
     sh (script:"aws ec2 start-instances --instance-ids ${instaceid.trim()} || true , returnStdout:true")
     echo "Starting Instance"
 }
