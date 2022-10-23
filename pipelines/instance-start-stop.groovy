@@ -1,36 +1,36 @@
-node {
-    
-    if(Action == 'start')
-    {
-        stage ('Starting Instace')
-        {
-            echo "starting instance"
-            startinstance()
+pipeline {
+    agent any
+    stages {
+        stage('Start Instance') {
+            steps {
+                    
+                    script{
+                    if (params.Action=='start') {
+                        echo "Starting Instance"
+                        sh (script:"aws ec2 start-instances --instance-ids ${instanceid.trim()} --region $region || true" , returnStdout:true)
+                    }
+                }
+            }    
+        }
+        stage('Stopping Instance'){
+            steps {
+                    script{
+                    if (params.Action=='stop') {
+                        echo "Stopping Instance"
+                        sh (script:"aws ec2 stop-instances --instance-ids ${instanceid.trim()} --region $region || true" , returnStdout:true)
+                    }
+                }
+            }
+        }
+        stage('Terminate Instance'){
+            steps {
+                    script{
+                    if (params.Action=='terminate') {
+                        echo "Stopping Instance"
+                        sh (script:"aws ec2 terminate-instances --instance-ids ${instanceid.trim()} --region $region || true" , returnStdout:true)
+                    }
+                }
+            }
         }
     }
-    if(Action == 'stop')
-    {
-        stage ('Stopping Instance')
-        {
-            echo "Stopping Instace"
-            stopinstance()
-        }
-    }
-    if(Action == 'terminate')
-    {
-        stage('Terminating Instace')
-        {
-            echo "Terminating Instace"
-            terminateinstance()
-        }
-    }
-    
 }
-def startinstance()
-{
-    sh (script:"aws ec2 start-instances --instance-ids ${instaceid.trim()} || true , returnStdout:true")
-    echo "Starting Instance"
-    sh (script:"aws ec2 start-instances --instance-ids ${instaceid.trim()} || true , returnStdout:true")
-    echo "Starting Instance"
-}
-

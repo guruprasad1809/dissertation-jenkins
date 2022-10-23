@@ -1,3 +1,16 @@
-pipeline{
-    
+pipeline {
+    agent any
+    stages {
+        stage('Start') {
+            steps {
+                    echo "its working"
+                    script{
+                    if (params.Action=='start') {
+                        echo "working again"
+                        sh (script:"aws ec2 start-instances --instance-ids ${instanceid.trim()} || true" , returnStdout:true)
+                    }
+                }
+            }    
+        }
+    }
 }
