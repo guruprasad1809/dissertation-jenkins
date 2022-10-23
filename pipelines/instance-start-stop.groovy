@@ -1,4 +1,4 @@
-node any {
+node {
     if(Action == 'start')
     {
         stage ('Starting Instace')
