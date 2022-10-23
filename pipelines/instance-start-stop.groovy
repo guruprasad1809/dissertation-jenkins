@@ -26,7 +26,7 @@ pipeline {
             steps {
                     script{
                     if (params.Action=='terminate') {
-                        echo "Stopping Instance"
+                        echo "Terminating Instance"
                         sh (script:"aws ec2 terminate-instances --instance-ids ${instanceid.trim()} --region $region || true" , returnStdout:true)
                     }
                 }
