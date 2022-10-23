@@ -1,5 +1,5 @@
 node {
-    stages{
+    
     if(Action == 'start')
     {
         stage ('Starting Instace')
@@ -24,7 +24,7 @@ node {
             terminateinstance()
         }
     }
-    }
+    
 }
 def startinstance()
 {
