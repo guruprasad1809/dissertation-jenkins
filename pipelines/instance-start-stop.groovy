@@ -23,9 +23,11 @@ node master {
             terminateinstance()
         }
     }
-}
+
 def startinstace()
 {
     sh (script:"aws ec2 start-instances --instance-ids ${instaceid.trim()} || true , returnStdout:true")
     echo "Starting Instance"
+}
+
 }
