@@ -27,7 +27,7 @@ pipeline {
                     script{
                     if (params.Action=='terminate') {
                         echo "Terminating Instance"
-                        sh (script:"aws ec2 terminate-instances --instance-ids ${instanceid.trim()} --region $region || true" , returnStdout:true)
+                        /*sh (script:"aws ec2 terminate-instances --instance-ids ${instanceid.trim()} --region $region || true" , returnStdout:true)*/
                     }
                 }
             }
