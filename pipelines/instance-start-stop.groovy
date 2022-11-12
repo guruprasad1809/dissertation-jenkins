@@ -17,7 +17,7 @@ pipeline {
                     script{
                     if (params.Action=='stop') {
                         echo "Stopping Instance"
-                        sh (script:"aws ec2 stop-instances --instance-ids ${instanceid.trim()} --region $region || true" , returnStdout:true)
+                        /*sh (script:"aws ec2 stop-instances --instance-ids ${instanceid.trim()} --region $region || true" , returnStdout:true)*/
                     }
                 }
             }
